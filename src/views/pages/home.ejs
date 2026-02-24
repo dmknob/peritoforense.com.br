@@ -51,10 +51,14 @@
                 <p class="font-display font-bold text-2xl text-gold">10</p>
                 <p class="text-white/40 text-xs tracking-wide mt-1">Especialidades</p>
             </div>
-            <div class="text-center border-x border-white/10">
-                <p class="font-display font-bold text-2xl text-gold">33+</p>
-                <p class="text-white/40 text-xs tracking-wide mt-1">Cidades</p>
-            </div>
+            <a href="/cidades"
+                class="block text-center border-x border-white/10 hover:bg-white/5 transition-colors py-2 -my-2 group">
+                <p class="font-display font-bold text-2xl text-gold group-hover:scale-110 transition-transform">
+                    <%= publishedStates.reduce((acc, state)=> acc + state.city_count, 0) %>
+                </p>
+                <p class="text-white/40 group-hover:text-gold text-xs tracking-wide mt-1 transition-colors">Cidades
+                    Atendidas →</p>
+            </a>
             <div class="text-center">
                 <p class="font-display font-bold text-2xl text-gold">1</p>
                 <p class="text-white/40 text-xs tracking-wide mt-1">Perito por vaga</p>

@@ -21,4 +21,35 @@ module.exports = {
             ORDER BY sp.sort_order
         `).all(cityId);
     },
+
+    getAllGroupedByState() {
+        const rows = db.prepare(`
+            SELECT c.name AS city_name, c.slug AS city_slug, c.id AS city_id,
+                   s.uf, s.name AS state_name
+            FROM cities c
+            JOIN states s ON s.id = c.state_id
+            WHERE c.is_published = 1
+            ORDER BY s.name, c.name
+        `).all();
+
+        const grouped = [];
+        let currentState = null;
+
+        for (const row of rows) {
+            if (!currentState || currentState.uf !== row.uf) {
+                currentState = {
+                    uf: row.uf,
+                    name: row.state_name,
+                    cities: []
+                };
+                grouped.push(currentState);
+            }
+            currentState.cities.push({
+                id: row.city_id,
+                name: row.city_name,
+                slug: row.city_slug
+            });
+        }
+        return grouped;
+    },
 };

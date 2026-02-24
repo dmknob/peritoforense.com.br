@@ -6,6 +6,7 @@ const cityController = require('../controllers/city');
 const listingController = require('../controllers/listing');
 
 router.get('/', homeController.index);
+router.get('/cidades', cityController.allCities);
 router.get('/sitemap.xml', listingController.sitemap);
 router.get('/robots.txt', (req, res) => res.sendFile(require('path').join(__dirname, '../../public/robots.txt')));
 router.get('/:uf', stateController.index);

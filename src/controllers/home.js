@@ -18,11 +18,6 @@ exports.index = (req, res) => {
         name: 'Portal Nacional de Perícia Forense',
         url: process.env.BASE_URL,
         description: 'Conectando os mais qualificados peritos assistentes aos escritórios de advocacia e empresas de todo o país.',
-        potentialAction: {
-            '@type': 'SearchAction',
-            target: `${process.env.BASE_URL}/busca?q={search_term_string}`,
-            'query-input': 'required name=search_term_string',
-        },
     });
 
     res.render('pages/home', {

@@ -1,0 +1,98 @@
+<!-- All Cities Hub — /cidades -->
+
+<!-- Hero -->
+<section class="pb-14 bg-navy relative overflow-hidden" style="padding-top: 110px;">
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+    <div
+        class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-40">
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs font-display tracking-widest uppercase mb-6"
+            aria-label="Breadcrumb">
+            <a href="/" class="text-white/30 hover:text-gold transition-colors">Portal</a>
+            <span class="text-white/20">›</span>
+            <span class="text-gold">
+                Cidades Atendidas
+            </span>
+        </nav>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-gold/30 bg-gold/5 mb-5">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="text-gold text-xs font-display tracking-widest uppercase">Cobertura Nacional</span>
+        </div>
+
+        <h1 class="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-4">
+            Cidades com <span class="text-gold">
+                Perícia Forense
+            </span>
+        </h1>
+        <p class="font-serif text-white/50 text-lg">
+            Estamos presentes em <%= totalCities %> municípios do país. Selecione sua localidade para encontrar o perito
+                assistente exclusivo da região.
+        </p>
+    </div>
+</section>
+
+<!-- Lista de estados e cidades -->
+<section class="py-16 bg-steel">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="space-y-12">
+            <% statesWithCities.forEach(function(state) { %>
+                <div class="border border-white/10 bg-navy overflow-hidden">
+                    <!-- Estado Header -->
+                    <div
+                        class="border-b border-white/10 bg-white/5 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-gold/30 bg-gold/10 text-gold font-display font-bold text-xl">
+                                <%= state.uf %>
+                            </span>
+                            <h2 class="font-display font-semibold text-xl text-white">
+                                <%= state.name %>
+                            </h2>
+                        </div>
+                        <a href="/<%= state.uf.toLowerCase() %>"
+                            class="text-xs font-display tracking-widest uppercase text-white/40 hover:text-gold transition-colors">
+                            Ver estado completo →
+                        </a>
+                    </div>
+
+                    <!-- Cidades Grid -->
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <% state.cities.forEach(function(city) { %>
+                                <a href="/<%= state.uf.toLowerCase() %>/<%= city.slug %>"
+                                    class="group flex items-center gap-3">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-gold transition-colors duration-200"></span>
+                                    <span
+                                        class="font-serif text-sm text-white/60 group-hover:text-white transition-colors duration-200">
+                                        <%= city.name %>
+                                    </span>
+                                </a>
+                                <% }); %>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="mt-16 pt-8 text-center border-t border-white/10">
+            <p class="font-serif text-sm text-white/30 mb-5">
+                Sua cidade não está na lista? Entre em contato com a nossa central para solicitação sob demanda.
+            </p>
+            <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20gostaria%20de%20informações%20sobre%20perícia%20forense%20em%20uma%20cidade%20não%20listada."
+                target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 px-6 py-3 font-display text-xs tracking-widest uppercase transition-all duration-200 border border-gold/40 text-gold hover:bg-gold hover:text-navy">
+                Falar com a Central
+            </a>
+        </div>
+
+    </div>
+</section>

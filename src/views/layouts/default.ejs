@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> | peritoforense.com.br</title>
+    <title>
+        <%= title %> | peritoforense.com.br
+    </title>
     <meta name="description" content="<%= description %>">
     <link rel="canonical" href="<%= BASE_URL %><%= locals.path || '' %>">
 
@@ -16,24 +19,24 @@
         <meta property="og:url" content="<%= BASE_URL %><%= locals.path || '' %>">
         <% if (locals.ogMeta.image) { %>
             <meta property="og:image" content="<%= locals.ogMeta.image %>">
-        <% } %>
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="<%= locals.ogMeta.title %>">
-        <meta name="twitter:description" content="<%= locals.ogMeta.description %>">
-    <% } else { %>
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Portal Nacional de Perícia Forense">
-        <meta property="og:title" content="<%= title %>">
-        <meta property="og:description" content="<%= description %>">
-        <meta property="og:url" content="<%= BASE_URL %><%= locals.path || '' %>">
-        <meta name="twitter:card" content="summary_large_image">
-    <% } %>
+            <% } %>
+                <meta name="twitter:card" content="summary_large_image">
+                <meta name="twitter:title" content="<%= locals.ogMeta.title %>">
+                <meta name="twitter:description" content="<%= locals.ogMeta.description %>">
+                <% } else { %>
+                    <meta property="og:type" content="website">
+                    <meta property="og:site_name" content="Portal Nacional de Perícia Forense">
+                    <meta property="og:title" content="<%= title %>">
+                    <meta property="og:description" content="<%= description %>">
+                    <meta property="og:url" content="<%= BASE_URL %><%= locals.path || '' %>">
+                    <meta name="twitter:card" content="summary_large_image">
+                    <% } %>
 
-    <!-- JSON-LD -->
-    <% if (locals.jsonLd) { %>
-        <script type="application/ld+json"><%- locals.jsonLd %></script>
-    <% } else { %>
-        <script type="application/ld+json">
+                        <!-- JSON-LD -->
+                        <% if (locals.jsonLd) { %>
+                            <script type="application/ld+json"><%- locals.jsonLd %></script>
+                            <% } else { %>
+                                <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
@@ -41,38 +44,74 @@
             "url": "<%= BASE_URL %>"
         }
         </script>
-    <% } %>
+                                <% } %>
 
-    <!-- Google Fonts — Non-Blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
-    </noscript>
+                                    <!-- Google Fonts — Non-Blocking -->
+                                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                                    <link rel="preload" as="style"
+                                        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
+                                    <link rel="stylesheet"
+                                        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+                                        media="print" onload="this.media='all'">
+                                    <noscript>
+                                        <link rel="stylesheet"
+                                            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
+                                    </noscript>
 
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="/css/styles.css">
+                                    <!-- CSS Principal -->
+                                    <link rel="stylesheet" href="/css/styles.css">
 
-    <!-- Google Analytics -->
-    <% if (locals.GA_ID && GA_ID !== 'G-XXXXXXXXXX') { %>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GA_ID %>"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '<%= GA_ID %>');
-    </script>
-    <% } %>
+                                    <!-- Google Analytics (Carregamento Adiado por Interação) -->
+                                    <% if (locals.GA_ID && GA_ID !=='G-XXXXXXXXXX' ) { %>
+                                        <script>
+                                            window.dataLayer = window.dataLayer || [];
+                                            function gtag() { dataLayer.push(arguments); }
+
+                                            // Inicializa localmente o consentimento/estado para quando a lib injetar
+                                            gtag('js', new Date());
+                                            // Não envia a page_view ou config ainda
+
+                                            let gtagLoaded = false;
+                                            function loadGTM() {
+                                                if (gtagLoaded) return;
+                                                gtagLoaded = true;
+
+                                                const script = document.createElement('script');
+                                                script.src = 'https://www.googletagmanager.com/gtag/js?id=<%= GA_ID %>';
+                                                script.async = true;
+                                                document.head.appendChild(script);
+
+                                                // Agora disparamos a configuração e o page_view
+                                                gtag('config', '<%= GA_ID %>', {
+                                                    page_path: window.location.pathname,
+                                                });
+
+                                                // Removemos os listeners após primeiro disparo
+                                                ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(evt => {
+                                                    window.removeEventListener(evt, loadGTM);
+                                                });
+                                            }
+
+                                            // Carregar apenas quando o usuário interagir
+                                            ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(evt => {
+                                                window.addEventListener(evt, loadGTM, { passive: true, once: true });
+                                            });
+
+                                            // Fallback: carregar mesmo sem interação após 5 segundos
+                                            setTimeout(loadGTM, 5000);
+                                        </script>
+                                        <% } %>
 </head>
+
 <body class="bg-navy text-white font-sans antialiased">
     <%- include('../partials/header') %>
 
-    <main>
-        <%- body %>
-    </main>
+        <main>
+            <%- body %>
+        </main>
 
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
 </body>
+
 </html>

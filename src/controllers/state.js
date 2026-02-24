@@ -18,12 +18,20 @@ exports.index = (req, res) => {
     const title = `Peritos Forenses em ${state.name} – ${state.uf}`;
     const description = `Lista de cidades com peritos forenses e assistência técnica judicial disponíveis no estado de ${state.name}.`;
 
+    const BASE_URL = process.env.BASE_URL;
+    const pageUrl = `${BASE_URL}/${uf.toLowerCase()}`;
+
     const jsonLd = JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: title,
-        description,
-        url: `${process.env.BASE_URL}/${uf.toLowerCase()}`,
+        '@graph': [
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Portal', item: BASE_URL },
+                    { '@type': 'ListItem', position: 2, name: state.name, item: pageUrl },
+                ],
+            },
+        ],
     });
 
     res.render('pages/state', {

@@ -5,6 +5,5 @@ node_modules/
 *.db-shm
 *.db-wal   
 *.log
-public/css/styles.css
 .DS_Store
 docs/

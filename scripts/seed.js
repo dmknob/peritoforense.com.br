@@ -75,43 +75,27 @@ const STATES = [
     { id: 17, uf: 'TO', name: 'Tocantins' },
 ];
 
-// 33 cidades do lançamento — is_published = 1
-// Formato: ibge_id (garante match exato sem ambiguidade de nome)
+// Cidades publicadas no portal: 1M+ habitantes + 6 sedes de TRF
+// (todas as sedes de TRF já têm 1M+ — nenhuma adição extra necessária)
 const LAUNCH_CITY_IDS = new Set([
-    3550308, // São Paulo / SP
-    3304557, // Rio de Janeiro / RJ
-    3106200, // Belo Horizonte / MG
-    4106902, // Curitiba / PR
-    4314902, // Porto Alegre / RS
-    5300108, // Brasília / DF
-    2304400, // Fortaleza / CE
-    2927408, // Salvador / BA
-    2611606, // Recife / PE
-    1302603, // Manaus / AM
-    1501204, // Belém / PA
-    4205407, // Florianópolis / SC
-    3518800, // Guarulhos / SP
-    3509502, // Campinas / SP
-    2111300, // São Luís / MA
-    2704302, // Maceió / AL
-    2800308, // Aracaju / SE
-    2211001, // Teresina / PI
-    1600303, // Macapá / AP
-    1400100, // Boa Vista / RR
-    1100205, // Porto Velho / RO
-    1721000, // Palmas / TO
-    3170206, // Uberlândia / MG
-    4113700, // Londrina / PR
-    4115200, // Maringá / PR
-    2607901, // Maceió... — Joinville
-    4209102, // Joinville / SC
-    3543402, // Ribeirão Preto / SP
-    3552205, // São José dos Campos / SP
-    3534401, // Osasco / SP
-    5208707, // Goiânia / GO
-    5002704, // Campo Grande / MS
-    5103403, // Cuiabá / MT
+    3550308, // São Paulo / SP        — 12,3M  (TRF-3)
+    3304557, // Rio de Janeiro / RJ   — 6,7M   (TRF-2)
+    5300108, // Brasília / DF         — 3,1M   (TRF-1)
+    2927408, // Salvador / BA         — 2,9M
+    2304400, // Fortaleza / CE        — 2,7M
+    3106200, // Belo Horizonte / MG   — 2,5M   (TRF-6)
+    1302603, // Manaus / AM           — 2,2M
+    4106902, // Curitiba / PR         — 1,9M
+    2611606, // Recife / PE           — 1,6M   (TRF-5)
+    5208707, // Goiânia / GO          — 1,5M
+    1501402, // Belém / PA            — 1,5M
+    4314902, // Porto Alegre / RS     — 1,4M   (TRF-4)
+    3518800, // Guarulhos / SP        — 1,4M
+    3509502, // Campinas / SP         — 1,2M
+    2111300, // São Luís / MA         — 1,1M
+    2704302, // Maceió / AL           — 1,0M
 ]);
+
 
 const SPECIALTIES = [
     { name: 'Forense Digital', slug: 'forense-digital', h1_term: 'Perito em Forense Digital', description: 'Crimes cibernéticos, recuperação de dados e análise de dispositivos digitais.', sort_order: 1 },

@@ -29,15 +29,12 @@
                         class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-navy border border-white/10 shadow-xl opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50">
                         <div class="p-2">
                             <div class="grid grid-cols-3 gap-1">
-                                <% const
-                                    UFS=['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
-                                    %>
-                                    <% UFS.forEach(function(uf) { %>
-                                        <a href="/<%= uf.toLowerCase() %>"
-                                            class="px-2 py-1.5 text-center text-xs font-display text-white/50 hover:text-gold hover:bg-white/5 transition-colors duration-150">
-                                            <%= uf %>
-                                        </a>
-                                        <% }); %>
+                                <% publishedStates.forEach(function(state) { %>
+                                    <a href="/<%= state.uf.toLowerCase() %>"
+                                        class="px-2 py-1.5 text-center text-xs font-display text-white/50 hover:text-gold hover:bg-white/5 transition-colors duration-150">
+                                        <%= state.uf %>
+                                    </a>
+                                    <% }); %>
                             </div>
                             <div class="border-t border-white/10 mt-2 pt-2 px-1">
                                 <a href="/#especialidades"

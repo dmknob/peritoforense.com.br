@@ -2,8 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
+const statesModel = require('./models/states');
 
 const app = express();
+
+// Carrega os estados com cidades publicadas uma vez no startup (dado estático em tempo real)
+const publishedStates = statesModel.getAllStatesWithCities();
 
 // View engine
 app.set('view engine', 'ejs');
@@ -20,6 +24,7 @@ app.use((req, res, next) => {
     res.locals.WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || '';
     res.locals.GA_ID = process.env.GA_ID || '';
     res.locals.path = req.path;
+    res.locals.publishedStates = publishedStates;
     // Defaults — controllers podem sobrescrever
     res.locals.title = 'Portal Nacional de Perícia Forense';
     res.locals.description = 'Conectando os mais qualificados peritos assistentes aos escritórios de advocacia e empresas de todo o país.';

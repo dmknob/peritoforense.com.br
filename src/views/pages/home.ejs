@@ -1,0 +1,186 @@
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-navy via-steel to-navy"></div>
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+    <!-- Gold accent line -->
+    <div
+        class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-60">
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-gold/30 bg-gold/5 mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="text-gold text-xs font-display tracking-widest uppercase">Portal Nacional</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-6">
+            Perícia Forense e<br>
+            <span class="text-gold">Assistência Técnica</span><br>
+            Judicial
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="font-serif text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed mb-10">
+            Conectando os mais qualificados peritos assistentes aos escritórios de advocacia
+            e empresas de todo o país. Um profissional exclusivo por localidade.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20preciso%20contratar%20um%20perito%20forense."
+                target="_blank" rel="noopener"
+                onclick="gtag && gtag('event','cta_click',{cta_type:'contratar_perito',page:'home'})"
+                class="w-full sm:w-auto px-8 py-4 bg-gold text-navy font-display font-bold text-sm tracking-widest uppercase hover:bg-gold/90 transition-all duration-200">
+                Contratar um Perito
+            </a>
+            <a href="#especialidades"
+                class="w-full sm:w-auto px-8 py-4 border border-white/30 text-white/80 font-display text-sm tracking-widest uppercase hover:border-gold hover:text-gold transition-all duration-200">
+                Ver Especialidades
+            </a>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto border-t border-white/10 pt-8">
+            <div class="text-center">
+                <p class="font-display font-bold text-2xl text-gold">10</p>
+                <p class="text-white/40 text-xs tracking-wide mt-1">Especialidades</p>
+            </div>
+            <div class="text-center border-x border-white/10">
+                <p class="font-display font-bold text-2xl text-gold">33+</p>
+                <p class="text-white/40 text-xs tracking-wide mt-1">Cidades</p>
+            </div>
+            <div class="text-center">
+                <p class="font-display font-bold text-2xl text-gold">1</p>
+                <p class="text-white/40 text-xs tracking-wide mt-1">Perito por vaga</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Especialidades Section -->
+<section id="especialidades" class="py-20 bg-steel">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-14">
+            <p class="text-gold text-xs font-display tracking-widest uppercase mb-3">Áreas de Atuação</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white">Especialidades do Portal</h2>
+            <p class="font-serif text-white/50 mt-3 max-w-xl mx-auto">Cada área conta com vagas exclusivas por cidade,
+                ocupadas pelos mais qualificados peritos do país.</p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            <% specialties.forEach(s=> { %>
+                <div
+                    class="group bg-navy/60 border border-white/10 p-6 hover:border-gold/40 hover:bg-navy transition-all duration-300 cursor-default">
+                    <div class="text-3xl mb-4">
+                        <%= s.icon %>
+                    </div>
+                    <h3
+                        class="font-display font-semibold text-white text-sm mb-2 group-hover:text-gold transition-colors duration-200">
+                        <%= s.name %>
+                    </h3>
+                    <p class="font-serif text-white/40 text-xs leading-relaxed">
+                        <%= s.description %>
+                    </p>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Para Profissionais Section -->
+<section id="profissionais" class="py-20 bg-navy relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: radial-gradient(circle at 80% 50%, rgba(201,168,76,0.4) 0%, transparent 60%);"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Texto -->
+            <div>
+                <p class="text-gold text-xs font-display tracking-widest uppercase mb-4">Para Peritos e Empresas</p>
+                <h2 class="font-display font-bold text-3xl md:text-4xl text-white leading-tight mb-6">
+                    Seja a Autoridade Máxima<br>da Sua Região
+                </h2>
+                <p class="font-serif text-white/60 leading-relaxed mb-4">
+                    Nosso modelo de exclusividade garante que apenas um profissional ocupe a posição de referência em
+                    cada especialidade e cidade. Isso não é um anúncio — é um domínio de mercado.
+                </p>
+                <p class="font-serif text-white/60 leading-relaxed mb-8">
+                    Quando um advogado de <strong class="text-white/80">Curitiba</strong> precisar de um perito em
+                    <strong class="text-white/80">Grafotecnia</strong>, verá apenas o seu nome.
+                </p>
+
+                <!-- Features -->
+                <ul class="space-y-3 mb-8">
+                    <% [ 'Visibilidade exclusiva por especialidade e cidade'
+                        , 'Página profissional com seu perfil e contato direto'
+                        , 'SEO otimizado para advogados e empresas da sua região'
+                        , 'Sem concorrência interna: apenas você naquela posição' , ].forEach(feature=> { %>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-0.5 flex-shrink-0">✦</span>
+                            <span class="font-serif text-white/60 text-sm">
+                                <%= feature %>
+                            </span>
+                        </li>
+                        <% }) %>
+                </ul>
+
+                <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20tenho%20interesse%20em%20uma%20vaga%20de%20perito%20no%20portal."
+                    target="_blank" rel="noopener"
+                    onclick="gtag && gtag('event','cta_click',{cta_type:'vaga_perito',page:'home'})"
+                    class="inline-block px-8 py-4 border-2 border-gold text-gold font-display text-sm tracking-widest uppercase hover:bg-gold hover:text-navy transition-all duration-200">
+                    Quero Minha Vaga Exclusiva
+                </a>
+            </div>
+
+            <!-- Card de destaque -->
+            <div class="bg-steel border border-white/10 p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 border border-gold/40 flex items-center justify-center">
+                        <span class="text-gold text-lg">⚖️</span>
+                    </div>
+                    <div>
+                        <p class="font-display font-semibold text-white text-sm">Vaga de Autoridade</p>
+                        <p class="text-white/40 text-xs">Exclusiva por especialidade + cidade</p>
+                    </div>
+                </div>
+                <div class="border border-gold/20 bg-gold/5 p-4 mb-4">
+                    <p class="font-display text-gold text-xs tracking-widest uppercase mb-2">Posição em Análise</p>
+                    <p class="font-serif text-white/60 text-sm leading-relaxed">
+                        "Estamos selecionando o profissional de referência para esta posição de autoridade. Apenas um
+                        perito por localidade tem o privilégio de ocupar este espaço."
+                    </p>
+                </div>
+                <div class="space-y-2 text-xs text-white/30 font-serif">
+                    <p>✦ Contato direto com advogados e empresas</p>
+                    <p>✦ Indexação orgânica no Google</p>
+                    <p>✦ Renovação anual exclusiva</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="py-16 bg-steel border-t border-white/10">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display font-bold text-2xl md:text-3xl text-white mb-4">
+            Precisa de um Perito Agora?
+        </h2>
+        <p class="font-serif text-white/50 mb-8">
+            Nossa central de coordenação encontra o profissional mais qualificado para o seu caso.
+        </p>
+        <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20preciso%20de%20assistência%20técnica%20judicial."
+            target="_blank" rel="noopener"
+            onclick="gtag && gtag('event','cta_click',{cta_type:'contratar_perito',page:'home_bottom'})"
+            class="inline-block px-10 py-4 bg-gold text-navy font-display font-bold text-sm tracking-widest uppercase hover:bg-gold/90 transition-all duration-200">
+            Falar com a Central
+        </a>
+    </div>
+</section>

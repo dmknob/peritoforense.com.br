@@ -1,0 +1,153 @@
+<section class="pt-28 pb-12 bg-navy relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="text-white/30 text-xs font-display tracking-wide mb-6" aria-label="Breadcrumb">
+            <a href="/" class="hover:text-gold transition-colors">Portal</a>
+            <span class="mx-2">›</span>
+            <a href="/<%= listing.uf.toLowerCase() %>/<%= listing.city_slug %>"
+                class="hover:text-gold transition-colors">
+                <%= listing.city_name %>
+            </a>
+            <span class="mx-2">›</span>
+            <span class="text-white/50">
+                <%= listing.specialty_name %>
+            </span>
+        </nav>
+
+        <h1 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+            <%= listing.h1_term %> em <span class="text-gold">
+                    <%= listing.city_name %>
+                </span>
+        </h1>
+        <p class="font-serif text-white/60 text-lg">
+            <%= listing.specialty_description %>
+        </p>
+    </div>
+</section>
+
+<% if (listing.is_active) { %>
+    <!-- ───────────────────────────────────────────────────────────
+     ESTADO B — PARCEIRO ATIVO
+──────────────────────────────────────────────────────────── -->
+    <section class="py-16 bg-steel">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <!-- Foto do parceiro -->
+                <div class="flex flex-col items-center text-center">
+                    <% if (listing.partner_photo) { %>
+                        <img src="<%= listing.partner_photo %>" alt="Foto de <%= listing.partner_name %>"
+                            class="w-36 h-36 object-cover border-2 border-gold/30 mb-4">
+                        <% } else { %>
+                            <div
+                                class="w-36 h-36 bg-slate flex items-center justify-center border border-white/10 mb-4">
+                                <span class="text-5xl text-white/20">⚖️</span>
+                            </div>
+                            <% } %>
+                                <p class="font-display font-bold text-white">
+                                    <%= listing.partner_name %>
+                                </p>
+                                <% if (listing.partner_crea) { %>
+                                    <p class="text-white/30 text-xs mt-1">
+                                        <%= listing.partner_crea %>
+                                    </p>
+                                    <% } %>
+                </div>
+
+                <!-- Bio + CTA -->
+                <div class="md:col-span-2">
+                    <% if (listing.partner_bio) { %>
+                        <p class="font-serif text-white/60 leading-relaxed mb-6">
+                            <%= listing.partner_bio %>
+                        </p>
+                        <% } %>
+                            <a href="https://wa.me/<%= listing.partner_whatsapp || WHATSAPP_NUMBER %>" target="_blank"
+                                rel="noopener"
+                                onclick="gtag && gtag('event','cta_click',{cta_type:'contratar_perito',city:'<%= listing.city_slug %>',specialty:'<%= listing.specialty_slug %>'})"
+                                class="inline-block px-8 py-4 bg-gold text-navy font-display font-bold text-sm tracking-widest uppercase hover:bg-gold/90 transition-all duration-200">
+                                Contratar esse Perito
+                            </a>
+                </div>
+            </div>
+
+            <% if (listing.seo_intro_html) { %>
+                <div class="mt-12 border-t border-white/10 pt-10 font-serif text-white/50 leading-relaxed text-sm">
+                    <%- listing.seo_intro_html %>
+                </div>
+                <% } %>
+        </div>
+    </section>
+
+    <% } else { %>
+        <!-- ───────────────────────────────────────────────────────────
+     ESTADO A — VÁCUO DE PODER
+──────────────────────────────────────────────────────────── -->
+        <section class="py-16 bg-steel">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Bloco de vácuo de poder -->
+                <div class="border border-gold/25 bg-gold/5 p-8 mb-10">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 border border-gold/40 flex items-center justify-center flex-shrink-0">
+                            <span class="text-gold text-xl">⚖️</span>
+                        </div>
+                        <div>
+                            <p class="font-display text-gold text-xs tracking-widest uppercase mb-2">Vaga de Autoridade
+                                em Seleção</p>
+                            <p class="font-serif text-white/70 leading-relaxed text-sm">
+                                Esta posição de referência para <strong class="text-white">
+                                    <%= listing.h1_term %>
+                                </strong> em
+                                <strong class="text-white">
+                                    <%= listing.city_name %>/<%= listing.uf %>
+                                </strong> está disponível.
+                                Apenas um profissional por região ocupa este espaço de destaque no portal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dois CTAs: quem precisar e quem quiser a vaga -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- CTA: Contratar perito -->
+                    <div class="bg-navy border border-white/10 p-6">
+                        <p class="font-display text-xs tracking-widest text-white/40 uppercase mb-3">Para Advogados e
+                            Empresas</p>
+                        <h2 class="font-display font-semibold text-white text-base mb-3">
+                            Precisa de uma assistência técnica agora?
+                        </h2>
+                        <p class="font-serif text-white/50 text-sm mb-5">
+                            Nossa central de coordenação aciona o profissional mais qualificado disponível.
+                        </p>
+                        <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20preciso%20de%20um%20perito%20em%20<%= encodeURIComponent(listing.specialty_name) %>%20em%20<%= encodeURIComponent(listing.city_name) %>."
+                            target="_blank" rel="noopener"
+                            onclick="gtag && gtag('event','cta_click',{cta_type:'contratar_perito',city:'<%= listing.city_slug %>',specialty:'<%= listing.specialty_slug %>'})"
+                            class="inline-block w-full text-center px-6 py-3 bg-gold text-navy font-display font-bold text-xs tracking-widest uppercase hover:bg-gold/90 transition-all duration-200">
+                            Quero Contratar um Perito
+                        </a>
+                    </div>
+
+                    <!-- CTA: Quero a vaga -->
+                    <div class="bg-navy border border-gold/20 p-6">
+                        <p class="font-display text-xs tracking-widest text-gold/60 uppercase mb-3">Para Peritos e
+                            Empresas de Perícia</p>
+                        <h2 class="font-display font-semibold text-white text-base mb-3">
+                            Esta vaga exclusiva pode ser sua.
+                        </h2>
+                        <p class="font-serif text-white/50 text-sm mb-5">
+                            Ocupe a posição de autoridade em <strong class="text-white/70">
+                                <%= listing.specialty_name %>
+                            </strong> nesta região. Uma vaga. Um profissional.
+                        </p>
+                        <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20tenho%20interesse%20na%20vaga%20de%20<%= encodeURIComponent(listing.specialty_name) %>%20em%20<%= encodeURIComponent(listing.city_name) %>."
+                            target="_blank" rel="noopener"
+                            onclick="gtag && gtag('event','cta_click',{cta_type:'vaga_perito',city:'<%= listing.city_slug %>',specialty:'<%= listing.specialty_slug %>'})"
+                            class="inline-block w-full text-center px-6 py-3 border-2 border-gold text-gold font-display text-xs tracking-widest uppercase hover:bg-gold hover:text-navy transition-all duration-200">
+                            Quero Minha Vaga Exclusiva
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <% } %>

@@ -1,0 +1,81 @@
+<!-- State Page — /:uf -->
+
+<!-- Hero do estado -->
+<section class="pb-14 bg-navy relative overflow-hidden" style="padding-top: 110px;">
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+    <div
+        class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-40">
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs font-display tracking-widest uppercase mb-6"
+            aria-label="Breadcrumb">
+            <a href="/" class="text-white/30 hover:text-gold transition-colors">Portal</a>
+            <span class="text-white/20">›</span>
+            <span class="text-gold">
+                <%= state.name %>
+            </span>
+        </nav>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-gold/30 bg-gold/5 mb-5">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="text-gold text-xs font-display tracking-widest uppercase">
+                <%= state.uf %> — Cidades Ativas
+            </span>
+        </div>
+
+        <h1 class="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-4">
+            Peritos Forenses em <span class="text-gold">
+                <%= state.name %>
+            </span>
+        </h1>
+        <p class="font-serif text-white/50 text-lg">
+            <%= cities.length %> cidade<%= cities.length !==1 ? 's' : '' %> com perícia forense disponível neste estado.
+        </p>
+    </div>
+</section>
+
+<!-- Lista de cidades -->
+<section class="py-14 bg-steel">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <% cities.forEach(function(city) { %>
+                <a href="/<%= city.uf.toLowerCase() %>/<%= city.slug %>"
+                    class="group bg-navy border border-white border-opacity-10 hover:border-gold hover:border-opacity-30 transition-all duration-300 p-5 flex items-center justify-between"
+                    style="border-left: 3px solid rgba(201,168,76,0.35);">
+                    <div>
+                        <p
+                            class="font-display font-bold text-white text-sm group-hover:text-gold transition-colors duration-200">
+                            <%= city.name %>
+                        </p>
+                        <p class="text-xs font-display mt-0.5" style="color:rgba(201,168,76,0.5)">
+                            10 especialidades
+                        </p>
+                    </div>
+                    <span class="text-xs group-hover:text-gold transition-colors duration-200"
+                        style="color:rgba(255,255,255,0.2)">→</span>
+                </a>
+                <% }); %>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="mt-10 pt-8 text-center" style="border-top:1px solid rgba(255,255,255,0.08)">
+            <p class="font-serif text-sm mb-5" style="color:rgba(255,255,255,0.3)">
+                Sua cidade não está na lista? Entre em contato com a nossa central.
+            </p>
+            <a href="https://wa.me/<%= WHATSAPP_NUMBER %>?text=Olá,%20gostaria%20de%20informações%20sobre%20perícia%20forense%20em%20<%= encodeURIComponent(state.name) %>."
+                target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 px-6 py-3 font-display text-xs tracking-widest uppercase transition-all duration-200"
+                style="border:1px solid rgba(201,168,76,0.4);color:#c9a84c"
+                onmouseover="this.style.background='#c9a84c';this.style.color='#0a1628'"
+                onmouseout="this.style.background='';this.style.color='#c9a84c'">
+                Falar com a Central
+            </a>
+        </div>
+
+    </div>
+</section>

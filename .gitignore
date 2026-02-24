@@ -1,0 +1,10 @@
+node_modules/
+.env
+*.db
+*.db-journal
+*.db-shm
+*.db-wal   
+*.log
+public/css/styles.css
+.DS_Store
+docs/

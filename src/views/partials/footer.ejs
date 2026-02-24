@@ -1,0 +1,53 @@
+<footer class="bg-steel border-t border-white/10 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+
+            <!-- Identidade -->
+            <div>
+                <p class="font-display font-bold text-xl text-white mb-1">
+                    perito<span class="text-gold">forense</span><span class="text-white/40">.com.br</span>
+                </p>
+                <p class="text-white/50 text-sm leading-relaxed">
+                    Portal Nacional de Perícia Forense e Assistência Técnica Judicial.
+                </p>
+            </div>
+
+            <!-- Links de estados -->
+            <div>
+                <h3 class="text-xs font-display tracking-widest text-white/40 uppercase mb-3">Cidades por Estado</h3>
+                <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.25rem 0.5rem">
+                    <% ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'].forEach(function(uf)
+                        { %>
+                        <a href="/<%= uf.toLowerCase() %>"
+                            class="text-white/40 hover:text-gold text-xs font-display transition-colors duration-200 py-0.5">
+                            <%= uf %>
+                        </a>
+                        <% }); %>
+                </div>
+            </div>
+
+            <!-- Contato -->
+            <div>
+                <h3 class="text-xs font-display tracking-widest text-white/40 uppercase mb-3">Contato</h3>
+                <a href="https://wa.me/<%= WHATSAPP_NUMBER %>" target="_blank" rel="noopener"
+                    class="inline-block px-5 py-2.5 border border-gold text-gold text-sm font-display tracking-wider hover:bg-gold hover:text-navy transition-all duration-200">
+                    Falar pelo WhatsApp
+                </a>
+                <p class="text-white/30 text-xs mt-4 leading-relaxed">
+                    Para advogados, empresas e profissionais de perícia.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+            <p class="text-white/30 text-xs">
+                © <%= new Date().getFullYear() %> peritoforense.com.br — Todos os direitos reservados.
+            </p>
+            <p class="text-white/20 text-xs">
+                Desenvolvido por <span class="text-white/40">Corpo Digital | Unidade de Performance</span>
+            </p>
+        </div>
+    </div>
+</footer>

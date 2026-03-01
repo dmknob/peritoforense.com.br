@@ -16,6 +16,10 @@ const SPECIALTY_FAQS = {
             q: 'O laudo do perito assistente tem validade judicial?',
             a: 'Sim. O parecer do assistente técnico é peça processual legalmente reconhecida pelo CPC (art. 465 e seguintes). Ele pode contestar o laudo do perito do juízo ou reforçar a tese da parte contratante.',
         },
+        {
+            q: 'Há urgência no prazo para contratar um perito assistente em Forense Digital?',
+            a: 'Sim. O assistente técnico deve ser indicado logo após a nomeação do perito oficial, para garantir participação em todas as fases da perícia. Entre em contato pelo WhatsApp disponível nesta página.',
+        },
     ],
     'grafotecnia': [
         {
@@ -29,6 +33,10 @@ const SPECIALTY_FAQS = {
         {
             q: 'Quanto tempo leva uma perícia grafotécnica?',
             a: 'O prazo varia conforme a complexidade do material e a quantidade de documentos a analisar. Em geral, laudos simples ficam prontos em 5 a 15 dias úteis. O assistente técnico pode informar o prazo estimado na consulta inicial.',
+        },
+        {
+            q: 'Quais documentos devo guardar para a perícia grafotécnica?',
+            a: 'Preserve todos os documentos originais em questão — cópias não substituem o original para análise de tinta e papel. Também são úteis outros documentos com a assinatura genuína do suspeito para comparação. Entre em contato pelo WhatsApp nesta página para uma orientação inicial sobre o seu caso.',
         },
     ],
     'documentoscopia': [
@@ -44,6 +52,10 @@ const SPECIALTY_FAQS = {
             q: 'Diplomas e certificados podem ser periciados?',
             a: 'Sim. A documentoscopia é amplamente utilizada para verificar a autenticidade de diplomas universitários, certificados profissionais e títulos eleitorais. O laudo pericial pode ser usado em processos administrativos e judiciais.',
         },
+        {
+            q: 'Posso solicitar uma análise preliminar antes de abrir processo judicial?',
+            a: 'Sim. Muitos clientes contratam o perito documentoscopista em caráter extrajudicial para confirmar a suspeita antes de protocolar a ação. Esse laudo preliminar já orienta a estratégia jurídica e pode ser juntado ao processo se necessário. Consulte um especialista pelo WhatsApp disponível nesta página.',
+        },
     ],
     'engenharia-forense': [
         {
@@ -57,6 +69,10 @@ const SPECIALTY_FAQS = {
         {
             q: 'O assistente técnico de engenharia pode acompanhar a vistoria do perito oficial?',
             a: 'Sim, e é altamente recomendado. O CPC permite que o assistente técnico acompanhe todas as diligências do perito nomeado pelo juízo, formule quesitos e elabore pareceres técnicos sobre o laudo oficial.',
+        },
+        {
+            q: 'Como contratar um perito de engenharia forense nesta região?',
+            a: 'Entre em contato pelo WhatsApp indicado nesta página. Nossa central de coordenação conecta você ao engenheiro perito disponível para atuar na comarca do seu processo, com experiência em litígios de construção civil, estruturas e avaliações de imóveis.',
         },
     ],
     'avaliacao-de-imoveis': [
@@ -72,6 +88,10 @@ const SPECIALTY_FAQS = {
             q: 'Quando é necessário contratar um assistente técnico na avaliação de imóvel?',
             a: 'Sempre que a avaliação feita pelo perito oficial do juízo parecer subestimada ou superestimada. O assistente técnico pode elaborar parecer técnico discordante e sugerir a realização de nova perícia ou esclarecimentos pelo perito nomeado.',
         },
+        {
+            q: 'O valor da avaliação pode mudar o resultado do meu processo?',
+            a: 'Sim, significativamente. Em inventários, divórcios e execuções, o valor do imóvel impacta diretamente a partilha, o valor da dívida ou da arrematação. Um assistente técnico que conteste uma avaliação equivocada pode representar diferenças de dezenas de milhares de reais. Consulte pelo WhatsApp desta página.',
+        },
     ],
     'pericia-contabil': [
         {
@@ -85,6 +105,10 @@ const SPECIALTY_FAQS = {
         {
             q: 'O assistente técnico contábil pode questionar os cálculos do perito oficial?',
             a: 'Sim. O assistente técnico contábil analisa o laudo do perito nomeado, identifica erros metodológicos ou de cálculo e apresenta parecer técnico ao juiz. Essa atuação pode resultar em diferenças significativas no valor da condenação ou da indenização.',
+        },
+        {
+            q: 'Quando devo acionar o assistente técnico contábil no meu processo?',
+            a: 'O ideal é contratá-lo logo após a nomeação do perito oficial, para que ele possa acompanhar todas as fases da perícia e formular quesitos dentro do prazo legal. Não espere o laudo chegar — entre em contato pelo WhatsApp nesta página assim que o processo pericial for instaurado.',
         },
     ],
     'pericia-trabalhista': [
@@ -100,6 +124,10 @@ const SPECIALTY_FAQS = {
             q: 'O laudo pericial trabalhista vincula o juiz?',
             a: 'Não vincula, mas tem peso probatório elevado. O juiz pode divergir do laudo, desde que fundamente sua decisão. Por isso, contar com um assistente técnico que elabore parecer técnico robusto aumenta significativamente as chances de contestação bem-sucedida.',
         },
+        {
+            q: 'A empresa pode ser condenada a pagar adicional de insalubridade retroativo sem perícia?',
+            a: 'Sim, se não contestada a tempo. A ausência de assistente técnico deixa o laudo do perito official sem contraditório técnico, e o juiz tende a homologá-lo. Para evitar condenações indevidas, acione o assistente técnico pelo WhatsApp disponível nesta página assim que a reclamação trabalhista for distribuída.',
+        },
     ],
     'acidentes-de-transito': [
         {
@@ -113,6 +141,10 @@ const SPECIALTY_FAQS = {
         {
             q: 'Quando devo contratar um perito assistente em acidente de trânsito?',
             a: 'Sempre que houver processo judicial envolvendo responsabilidade pelo acidente — seja para contestar a versão da outra parte ou para fortalecer o pedido de indenização. O assistente técnico acompanha a perícia oficial e elabora parecer independente.',
+        },
+        {
+            q: 'Posso contratar o perito assistente antes do processo ser aberto?',
+            a: 'Sim. Um laudo extrajudicial elaborado logo após o acidente registra os vestígios enquanto ainda existem — marcas na pista, posição dos veículos, danos não reparados. Esse laudo pode ser usado na fase pré-processual e reforça muito a posição da sua parte. Consulte pelo WhatsApp nesta página.',
         },
     ],
     'propriedade-intelectual': [
@@ -128,6 +160,10 @@ const SPECIALTY_FAQS = {
             q: 'A perícia de propriedade intelectual é admitida em quais juízos?',
             a: 'A perícia é admitida na Justiça Federal (patentes e marcas registradas no INPI), na Justiça Estadual (direito autoral e concorrência desleal) e em arbitragens. O assistente técnico pode atuar em todos esses foros.',
         },
+        {
+            q: 'O código-fonte da minha empresa ficará confidencial durante a perícia?',
+            a: 'Sim. O perito assistente em propriedade intelectual é obrigado a manter sigilo sobre os materiais analisados, e o processo pode tramitar em segredo de justiça quando envolve segredo industrial. Consulte um especialista pelo WhatsApp nesta página para entender como proteger seus ativos durante a disputa.',
+        },
     ],
     'pericia-ambiental': [
         {
@@ -141,6 +177,10 @@ const SPECIALTY_FAQS = {
         {
             q: 'Qual a diferença entre perícia ambiental judicial e consultoria ambiental?',
             a: 'A consultoria ambiental é contratada para assessoria técnica extrajudicial — licenciamentos, relatórios e planos de gestão. A perícia ambiental judicial é produzida especificamente para um processo e deve seguir normas processuais, podendo ser submetida ao contraditório pela parte contrária.',
+        },
+        {
+            q: 'Empresas autuadas por órgãos ambientais podem usar laudos periciais na defesa?',
+            a: 'Sim. O laudo de assistente técnico ambiental pode ser apresentado tanto em processos administrativos quanto judiciais para contestar o enquadramento da infração, demonstrar ausência de nexo causal ou quantificar o dano real de forma mais precisa. Entre em contato pelo WhatsApp desta página para uma avaliação do seu caso.',
         },
     ],
 };

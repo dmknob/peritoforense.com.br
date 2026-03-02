@@ -286,6 +286,7 @@ exports.show = (req, res) => {
         jsonLd,
         listing,
         faqs,
+        is_hidden: listing.is_hidden
     });
 };
 

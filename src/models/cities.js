@@ -15,7 +15,8 @@ module.exports = {
     getSpecialtiesWithStatus(cityId) {
         return db.prepare(`
             SELECT sp.id, sp.name, sp.slug, sp.h1_term, sp.description, sp.sort_order,
-                   COALESCE(l.is_active, 0) AS is_active
+                   COALESCE(l.is_active, 0) AS is_active,
+                   COALESCE(l.is_hidden, 0) AS is_hidden
             FROM specialties sp
             LEFT JOIN listings l ON l.specialty_id = sp.id AND l.city_id = ?
             ORDER BY sp.sort_order

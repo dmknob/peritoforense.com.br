@@ -29,7 +29,7 @@ exports.index = (req, res) => {
                 name: title,
                 description,
                 url: pageUrl,
-                itemListElement: specialties.map((s, i) => ({
+                itemListElement: specialties.filter(s => !s.is_hidden).map((s, i) => ({
                     '@type': 'ListItem',
                     position: i + 1,
                     name: s.name,

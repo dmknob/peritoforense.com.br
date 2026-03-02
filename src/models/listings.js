@@ -13,7 +13,8 @@ module.exports = {
                 sp.h1_term,
                 sp.description AS specialty_description,
                 s.uf,
-                s.name    AS state_name
+                s.name    AS state_name,
+                l.is_hidden AS is_hidden
             FROM listings l
             JOIN cities     c  ON c.id  = l.city_id
             JOIN specialties sp ON sp.id = l.specialty_id
@@ -35,7 +36,7 @@ module.exports = {
             JOIN cities      c  ON c.id  = l.city_id
             JOIN specialties sp ON sp.id = l.specialty_id
             JOIN states      s  ON s.id  = c.state_id
-            WHERE c.is_published = 1
+            WHERE c.is_published = 1 AND l.is_hidden = 0
             ORDER BY s.uf, c.slug, sp.sort_order
         `).all();
     },

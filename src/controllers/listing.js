@@ -1,5 +1,7 @@
 const listingsModel = require('../models/listings');
 const statesModel = require('../models/states');
+const fs = require('fs');
+const path = require('path');
 
 // FAQ genérico por especialidade — Leandro personaliza via seo_intro_html
 const SPECIALTY_FAQS = {
@@ -217,6 +219,11 @@ exports.show = (req, res) => {
 
     const faqs = SPECIALTY_FAQS[specialtySlug] || DEFAULT_FAQS;
 
+    // ── Speciality Hero Image ─────────────────────────────────────────
+    const heroImageRelative = `/images/specialties/${specialtySlug}.webp`;
+    const heroImageAbsolute = path.join(__dirname, '../../public', heroImageRelative);
+    const heroImagePath = fs.existsSync(heroImageAbsolute) ? heroImageRelative : null;
+
     // ── BreadcrumbList ───────────────────────────────────────────────
     const breadcrumb = {
         '@type': 'BreadcrumbList',
@@ -280,13 +287,22 @@ exports.show = (req, res) => {
         '@graph': [breadcrumb, serviceSchema, faqSchema],
     });
 
+    // ── Open Graph Meta ──────────────────────────────────────────────
+    const ogMeta = {
+        title,
+        description,
+        image: heroImagePath ? `${BASE_URL}${heroImagePath}` : undefined
+    };
+
     res.render('pages/listing', {
         title,
         description,
         jsonLd,
         listing,
         faqs,
-        is_hidden: listing.is_hidden
+        is_hidden: listing.is_hidden,
+        heroImagePath,
+        ogMeta
     });
 };
 

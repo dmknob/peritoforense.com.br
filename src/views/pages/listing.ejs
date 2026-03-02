@@ -1,31 +1,41 @@
-<section class="pt-28 pb-12 bg-navy relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5"
-        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
-    </div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Breadcrumb -->
-        <nav class="text-white/30 text-xs font-display tracking-wide mb-6" aria-label="Breadcrumb">
-            <a href="/" class="hover:text-gold transition-colors">Portal</a>
-            <span class="mx-2">›</span>
-            <a href="/<%= listing.uf.toLowerCase() %>/<%= listing.city_slug %>"
-                class="hover:text-gold transition-colors">
-                <%= listing.city_name %>
-            </a>
-            <span class="mx-2">›</span>
-            <span class="text-white/50">
-                <%= listing.specialty_name %>
-            </span>
-        </nav>
+<section class="pt-28 pb-12 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 bg-navy relative overflow-hidden" <% if
+    (locals.heroImagePath) { %>
+    style="background-image: url('<%= heroImagePath %>'); background-size: cover; background-position: center;"
+        <% } %>
+            >
+            <!-- Overlay Escuro para Legibilidade -->
+            <% if (locals.heroImagePath) { %>
+                <div class="absolute inset-0 bg-navy/30"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+                <% } %>
 
-        <h1 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
-            <%= listing.h1_term %> em <span class="text-gold">
-                    <%= listing.city_name %>
-                </span>
-        </h1>
-        <p class="font-serif text-white/60 text-lg">
-            <%= listing.specialty_description %>
-        </p>
-    </div>
+                    <div class="absolute inset-0 opacity-5"
+                        style="background-image: linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px); background-size: 60px 60px;">
+                    </div>
+                    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <!-- Breadcrumb -->
+                        <nav class="text-white/30 text-xs font-display tracking-wide mb-6" aria-label="Breadcrumb">
+                            <a href="/" class="hover:text-gold transition-colors">Portal</a>
+                            <span class="mx-2">›</span>
+                            <a href="/<%= listing.uf.toLowerCase() %>/<%= listing.city_slug %>"
+                                class="hover:text-gold transition-colors">
+                                <%= listing.city_name %>
+                            </a>
+                            <span class="mx-2">›</span>
+                            <span class="text-white/50">
+                                <%= listing.specialty_name %>
+                            </span>
+                        </nav>
+
+                        <h1 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+                            <%= listing.h1_term %> em <span class="text-gold">
+                                    <%= listing.city_name %>
+                                </span>
+                        </h1>
+                        <p class="font-serif text-white/60 text-lg">
+                            <%= listing.specialty_description %>
+                        </p>
+                    </div>
 </section>
 
 <% if (listing.is_active) { %>

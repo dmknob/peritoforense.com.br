@@ -117,8 +117,10 @@
     const iconClose = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
 
     btn.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
         if (isMenuOpen) {
+            closeMobileMenu();
+        } else {
+            isMenuOpen = true;
             menu.classList.remove('hidden');
             // Small delay to allow reflow so the transition works
             requestAnimationFrame(() => {
@@ -127,13 +129,10 @@
             });
             btn.querySelector('svg').innerHTML = iconClose;
             document.body.style.overflow = 'hidden';
-        } else {
-            closeMobileMenu();
         }
     });
 
     function closeMobileMenu() {
-        if (!isMenuOpen) return;
         isMenuOpen = false;
         menu.classList.remove('opacity-100');
         menu.classList.add('opacity-0');

@@ -20,9 +20,9 @@ const db = require('../src/models/db');
 // ──────────────────────────────────────────────────────────────────
 const PARCEIRO = {
     nome: 'Alessandro Gomes',
-    whatsapp: 5541996721183,   // ❗ Preencher: ex. '5541999990000' (DDI+DDD+número)
-    registro: null,   // ❗ Preencher: ex. 'ABG nº 1234' ou 'CRO-PR 12345'
-    foto: null,   // Preencher futuramente: ex. '/img/parceiros/alessandro-gomes.webp'
+    whatsapp: '5541996721183',  // ⚠️ SEMPRE string com aspas — número sem aspas vira REAL no SQLite e quebra a URL do WhatsApp (ex: 5541...183.0)
+    registro: null,             // Preencher: ex. 'ABG nº 1234' ou 'CRO-PR 12345'
+    foto: null,                 // Preencher futuramente: ex. '/img/parceiros/alessandro-gomes.webp'
 };
 
 const CIDADE_SLUG = 'curitiba';

@@ -69,25 +69,43 @@
                 <!-- Bio + CTA -->
                 <div class="md:col-span-2">
                     <% if (listing.partner_bio) { %>
-                        <p class="font-serif text-white/60 leading-relaxed mb-6">
-                            <%= listing.partner_bio %>
-                        </p>
+                        <div class="font-serif text-white/70 leading-relaxed mb-6 space-y-6">
+                            <% listing.partner_bio.split(/\n\n+/).forEach(function(bloco) { var
+                                linhas=bloco.trim().split(/\n/); var titulo=linhas[0].trim(); var
+                                corpo=linhas.slice(1).join(' ').trim();
+                            %>
+                                <div>
+                                    <h4 class="font-serif font-semibold text-gold/90 text-base mb-2">
+                                        <%= titulo %>
+                                    </h4>
+                                    <% if (corpo) { %>
+                                        <p class="text-white/60 leading-relaxed">
+                                            <%= corpo %>
+                                        </p>
+                                    <% } %>
+                                </div>
+                            <% }); %>
+                        </div>
                         <% } %>
-                            <a href="https://wa.me/<%= listing.partner_whatsapp || WHATSAPP_NUMBER %>" target="_blank"
+                            <a href="https://wa.me/<%= listing.partner_whatsapp || WHATSAPP_NUMBER %>?text=Ol%C3%A1%2C%20vim%20pelo%20peritoforense.com.br%20e%20gostaria%20de%20contratar%20um%20perito%20em%20<%= encodeURIComponent(listing.specialty_name) %>%20em%20<%= encodeURIComponent(listing.city_name) %>." target="_blank"
                                 rel="noopener"
-                                onclick="gtag && gtag('event','cta_click',{cta_type:'contratar_perito',city:'<%= listing.city_slug %>',specialty:'<%= listing.specialty_slug %>'})"
-                                class="block w-full text-center sm:inline-block sm:w-auto px-8 py-4 bg-gold text-navy font-display font-bold text-sm tracking-widest uppercase hover:bg-gold/90 transition-all duration-200">
-                                Contratar esse Perito
-                            </a>
+                                onclick="gtag && gtag('
+                                event','cta_click',{cta_type:'contratar_perito',city:'<%=listing.city_slug %>
+                                ',specialty:'<%= listing.specialty_slug %>'})"
+                                    class="block w-full text-center sm:inline-block sm:w-auto px-8 py-4 bg-gold
+                                    text-navy font-display font-bold text-sm tracking-widest uppercase hover:bg-gold/90
+                                    transition-all duration-200">
+                                    Contratar esse Perito
+                                    </a>
+                        </div>
                 </div>
-            </div>
 
-            <% if (listing.seo_intro_html) { %>
-                <div class="mt-12 border-t border-white/10 pt-10 font-serif text-white/50 leading-relaxed text-sm">
-                    <%- listing.seo_intro_html %>
-                </div>
-                <% } %>
-        </div>
+                <% if (listing.seo_intro_html) { %>
+                    <div class="mt-12 border-t border-white/10 pt-10 font-serif text-white/50 leading-relaxed text-sm">
+                        <%- listing.seo_intro_html %>
+                    </div>
+                    <% } %>
+            </div>
     </section>
 
     <% } else { %>
